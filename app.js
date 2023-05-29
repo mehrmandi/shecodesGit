@@ -1,24 +1,29 @@
 // city time --------------------------------
 
 let weekArrey = [
-  "monday",
-  "tuesday",
-  "wednesday",
-  "thursday",
-  "friday",
-  "saturday",
-  "sunday",
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
 ];
 
 let cityName = document.querySelector(".city-name");
 let cityDate = document.querySelector(".city-date");
+let weatherDescription = document.querySelector("#weather-description");
+let precipitation = document.querySelector(".city-humidity")
+let wind = document.querySelector(".city-wind")
+let weatherIcon = document.querySelector(".weather-icon")
 let celDeg = document.querySelector(".cel-deg");
 let farDeg = document.querySelector(".far-deg");
 let searchBtn = document.querySelector(".search-btn");
 let flag = true;
 
-function setDate() {
-  let now = new Date();
+
+function setDate(timestamp) {
+  let now = new Date(timestamp);
   let day = weekArrey[now.getDay()];
   let hour = now.getHours();
   let minute = now.getMinutes();
@@ -28,15 +33,7 @@ function setDate() {
   if (minute < 10) {
     minute = `0${minute}`;
   }
-  cityDate.innerHTML = `${day} ${hour}:${minute}<br />Clouds`;
-}
-
-function searchCity(event) {
-  event.preventDefault();
-  let searchInput = document.querySelector(".search-input");
-  setDate();
-  searchCityTemp();
-  searchInput.value = "";
+  cityDate.innerHTML = `${day} ${hour}:${minute}`;
 }
 
 // ---------------------------------------------------------------
@@ -73,9 +70,19 @@ function currentCityWeather(res) {
   let cityTemp = document.querySelector(".city-temp");
   let currentTempLoc = Math.round(res.data.main.temp);
   let city = res.data.name;
-  console.log(city);
+  let currentWeatherIcon = res.data.weather[0].icon;
   cityName.innerHTML = city;
   cityTemp.innerHTML = currentTempLoc;
+  weatherDescription.innerHTML = res.data.weather[0].description;
+  precipitation.innerHTML = `Precipitation: ${res.data.main.humidity}%`;
+  wind.innerHTML = `Wind: ${res.data.wind.speed}km/h`;
+  weatherIcon.setAttribute(
+    "src",
+    `https://openweathermap.org/img/wn/${currentWeatherIcon}@2x.png`
+  );
+  console.log();
+  setDate(res.data.dt * 1000);
+
 }
 
 function myCityTemp(position) {
@@ -90,11 +97,12 @@ function updateCurrentCity(e) {
   navigator.geolocation.getCurrentPosition(myCityTemp);
 }
 
-function searchCityTemp() {
+function searchCityTemp(event) {
+  event.preventDefault();
   let searchInput = document.querySelector(".search-input");
   const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${searchInput.value}&appid=${weatherApiKey}&units=metric`;
   axios.get(apiUrl).then(currentCityWeather);
 }
 
 currentBtn.addEventListener("click", updateCurrentCity);
-searchBtn.addEventListener("click", searchCity);
+searchBtn.addEventListener("click", searchCityTemp);

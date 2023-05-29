@@ -1,0 +1,4 @@
+#weather-description::first-letter {
+    text-transform: capitalize;
+
+}
