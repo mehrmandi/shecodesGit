@@ -14,7 +14,7 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css"
     />
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
     <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
     <title>weather app</title>
   </head>
@@ -34,76 +34,38 @@
       <div class="row">
         <div class="col-4 d-flex flex-column text-muted fw-normal">
           <h2 class="city-name">Lisbon</h2>
-          <p>Last updated at: <span  class="city-date m-0">
-            Saturday 22:17 </span></p>
-            <div id="weather-description">Clouds</div>
-          
+          <p>
+            Last updated at: <span class="city-date m-0"> Saturday 22:17 </span>
+          </p>
+          <div id="weather-description">Clouds</div>
         </div>
         <div class="row justify-content-between align-baseline ps-3">
           <div class="col-8 d-flex align-baseline">
-           <img class="weather-icon" src="https://openweathermap.org/img/wn/10d@2x.png" alt="weather-description">
+            <img
+              class="weather-icon"
+              src="https://openweathermap.org/img/wn/10d@2x.png"
+              alt="weather-description"
+            />
             <h2 class="ms-3 pt-4">
-              <span class="city-temp fs-1">14</span
-              ><sup
-                >°<a class="cel-deg text-decoration-none" href="javascript:void(0);">C</a> | °<a
-                  href="javascript:void(0);"
-                  class="far-deg text-decoration-none"
-                  >F</a
-                ></sup
-              >
+              <span class="city-temp fs-1">14</span><sup>°C </sup>
             </h2>
           </div>
-          <div class="col-4 text-muted lh-1 pt-3">
+          <div class="col-4 text-muted text-center lh-1 pt-3">
             <p class="city-humidity">Precipitation: 73%</p>
             <p class="city-wind">Wind: 4km/h</p>
           </div>
         </div>
-        <div class="row justify-content-around align-items-baseline mt-3 pe-0">
-          <div class="col d-flex flex-column align-items-center">
-            <p class="my-0">Sun</p>
-            <i
-              class="bi bi-cloud-fill"
-              style="font-size: 60px; color: cyan;"
-            ></i>
-            <p>12°<sup>c</sup></p>
-          </div>
-          <div class="col d-flex flex-column align-items-center">
-            <p class="my-0">Mon</p>
-            <i
-              class="bi bi-cloud-fill"
-              style="font-size: 60px; color: cyan;"
-            ></i>
-            <p>11°<sup>c</sup></p>
-          </div>
-          <div class="col d-flex flex-column align-items-center">
-            <p class="my-0">Tue</p>
-            <i
-              class="bi bi-brightness-high-fill"
-              style="font-size: 60px; color: rgb(240, 210, 12);"
-            ></i>
-            <p>11°<sup>c</sup></p>
-          </div>
-          <div class="col d-flex flex-column align-items-center">
-            <p class="my-0">Wed</p>
-            <i
-              class="bi bi-cloud-sun-fill"
-              style="font-size: 60px; color: rgb(194, 241, 24);"
-            ></i>
-            <p>9°<sup>c</sup></p>
-          </div>
-          <div class="col d-flex flex-column align-items-center">
-            <p class="my-0">Thu</p>
-            <i
-              class="bi bi-cloud-rain-fill"
-              style="font-size: 60px; color: rgb(82, 188, 250);"
-            ></i>
-            <p>8°<sup>c</sup></p>
-          </div>
-        </div>
+        <div
+          class="row daily-forcast-container justify-content-between align-items-baseline mt-3 pe-0"
+        ></div>
       </div>
-      <a href="https://github.com/mehrmandi/shecodesGit.git">Open-source code</a>
-      <span>, by Mehrnoosh Mandipour</span>
     </div>
+    <footer class="ms-5 ps-5 mt-3">
+      <a class="ms-3" href="https://github.com/mehrmandi/shecodesGit.git"
+        >Open-source code</a
+      >
+      <span>, by Mehrnoosh Mandipour</span>
+    </footer>
     <script src="app.js"></script>
   </body>
 </html>
